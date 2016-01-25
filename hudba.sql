@@ -1,7 +1,6 @@
 create database hudba char set utf8 collate utf8_czech_ci;
 use hudba;
 /*drop database hudba;*/
-
 create table skladba
 (
 	id_skladba int not null primary key auto_increment,
@@ -10,25 +9,6 @@ create table skladba
     rok varchar(4),
     hodnoceni int
 );
-
-create table album
-(
-	id_album int not null primary key auto_increment,
-    nazev varchar(20) not null,
-    rok varchar(4),
-	pocet_stop int,
-    kompilace bool
-);
-
-create table skl_alb
-(
-	id_skladba int not null,
-    id_album int not null,
-    primary key(id_skladba,id_album)
-);
-
-alter table skl_alb add constraint FK_skl_alb foreign key (id_skladba) references skladba(id_skladba) on delete cascade;
-alter table skl_alb add constraint FK_alb_skl foreign key (id_album) references album(id_album) on delete cascade;
 /*alter table skladba drop foreign key FK_skl_alb;*/
 
 create table zanr
@@ -50,6 +30,29 @@ create table umelec
     rok_zalozeni varchar(4),
     datum_narozeni varchar(4)
 );
+
+create table album
+(
+	id_album int not null primary key auto_increment,
+    nazev varchar(20) not null,
+    rok varchar(4),
+	pocet_stop int,
+    kompilace bool,
+    id_umelec int not null
+);
+
+alter table album add constraint FK_alb_ume foreign key(id_umelec) references umelec(id_umelec);
+
+
+create table skl_alb
+(
+	id_skladba int not null,
+    id_album int not null,
+    primary key(id_skladba,id_album)
+);
+
+alter table skl_alb add constraint FK_skl_alb foreign key (id_skladba) references skladba(id_skladba) on delete cascade;
+alter table skl_alb add constraint FK_alb_skl foreign key (id_album) references album(id_album) on delete cascade;
 
 create table ume_skl
 (

@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `hudba` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci */;
+USE `hudba`;
 -- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: hudba
@@ -48,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-26 19:40:13
+-- Dump completed on 2016-01-25 13:48:52
