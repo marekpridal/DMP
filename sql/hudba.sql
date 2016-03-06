@@ -6,7 +6,7 @@ create table skladba
 	id_skladba int not null primary key auto_increment,
     jmeno varchar(20) not null,
     skladatel varchar(20),
-    rok varchar(4),
+    rok int,
     hodnoceni int
 );
 /*alter table skladba drop foreign key FK_skl_alb;*/
@@ -27,15 +27,15 @@ create table umelec
 	id_umelec int not null primary key auto_increment,
     jmeno varchar(20) not null,
     bio text,
-    rok_zalozeni varchar(4),
-    datum_narozeni varchar(4)
+    rok_zalozeni int,
+    datum_narozeni date
 );
 
 create table album
 (
 	id_album int not null primary key auto_increment,
     nazev varchar(20) not null,
-    rok varchar(4),
+    rok int,
 	pocet_stop int,
     kompilace bool,
     id_umelec int not null
